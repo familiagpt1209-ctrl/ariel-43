@@ -1,0 +1,21 @@
+// All sound is synthesized locally: no streaming or external audio files.
+export class AudioEngine{
+ constructor(){this.enabled=true;this.volume=.65;this.ctx=null;this.lastChaseBeep=-99;}
+ start(){if(!this.ctx){let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;this.ctx=new AC();this.master=this.ctx.createGain();this.master.gain.value=this.enabled?this.volume*.22:0;this.master.connect(this.ctx.destination);this.motor=this.ctx.createOscillator();this.motor.type='sawtooth';this.motorGain=this.ctx.createGain();this.motorGain.gain.value=0;let filter=this.ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=350;this.motor.connect(filter);filter.connect(this.motorGain);this.motorGain.connect(this.master);this.motor.start();}this.ctx.resume().catch(()=>{});}
+ setEnabled(on){this.enabled=on;if(this.master)this.master.gain.setTargetAtTime(on?this.volume*.22:0,this.ctx.currentTime,.05);}
+ setVolume(value){const n=Number(value);this.volume=Number.isFinite(n)?Math.max(0,Math.min(1,n)):.65;if(this.master)this.master.gain.setTargetAtTime(this.enabled?this.volume*.22:0,this.ctx.currentTime,.05);}
+ ambience(district,rain,event,speed,time=0){
+  if(!this.ctx)return;
+  if(!this.air){
+   const buffer=this.ctx.createBuffer(1,this.ctx.sampleRate*2,this.ctx.sampleRate),data=buffer.getChannelData(0);let previous=0;for(let i=0;i<data.length;i++){previous=(previous+(Math.random()*2-1)*.08)/1.025;data[i]=previous;}
+   this.air=this.ctx.createBufferSource();this.air.buffer=buffer;this.air.loop=true;this.airFilter=this.ctx.createBiquadFilter();this.airFilter.type='lowpass';this.airGain=this.ctx.createGain();this.airGain.gain.value=0;this.air.connect(this.airFilter);this.airFilter.connect(this.airGain);this.airGain.connect(this.master);this.air.start();
+  }
+  const trainPhase=Math.floor((time+4)/34);if(district==='metro'&&trainPhase!==this.trainPhase){this.trainPhase=trainPhase;this.tone('train-brake');}const now=this.ctx.currentTime;this.airFilter.frequency.setTargetAtTime(({center:400,residential:250,industrial:650,metro:850,coast:1200,neon:1700}[district]||500)+rain*2500,now,.8);this.airGain.gain.setTargetAtTime(.045+rain*.20+speed*.001,now,.5);
+  if(district!==this.lastDistrict){this.lastDistrict=district;this.tone(district==='metro'?'train-warning':district==='coast'?'bird':'district');}
+  if(event==='chase'&&(time<this.lastChaseBeep||time-this.lastChaseBeep>1.6)){this.tone('siren');this.lastChaseBeep=time;}
+  if(event&&event!==this.lastEvent)this.tone(event==='station'?'train-warning':event==='police'||event==='chase'?'siren':'district');this.lastEvent=event;
+ }
+ update(speed,playing,running=false,grounded=true){if(!this.ctx)return;if(!playing&&this.airGain)this.airGain.gain.setTargetAtTime(0,this.ctx.currentTime,.15);this.motor.frequency.setTargetAtTime(45+speed*3,this.ctx.currentTime,.1);this.motorGain.gain.setTargetAtTime(playing&&!running?.09:0,this.ctx.currentTime,.12);if(playing&&running&&grounded&&this.ctx.currentTime-(this.lastStep||0)>Math.PI/(8+speed*.12)){this.lastStep=this.ctx.currentTime;this.tone('step');}}
+ tone(type){if(!this.ctx||!this.enabled)return;let presets={'chase-win':[440,880,.5,'triangle',.09],'train-brake':[2400,180,.9,'sawtooth',.025],'train-warning':[520,260,.8,'triangle',.14],warning:[880,440,.35,'square',.05],siren:[550,950,.65,'sine',.1],bird:[1500,2300,.2,'sine',.05],district:[330,495,.4,'sine',.055],step:[75,32,.065,'triangle',.055],scooter:[180,760,.4,'triangle'],'scooter-break':[320,65,.25,'triangle'],magnet:[440,660,.35,'sine'],drone:[220,1600,.6,'triangle'],overclock:[1200,2200,.2,'square'],shield:[700,1000,.5,'sine'],turbo:[100,900,.65,'sawtooth'],coin:[880,1320,.08,'sine'],jump:[250,540,.16,'sine'],land:[95,48,.10,'triangle'],slide:[180,65,.18,'triangle'],trick:[460,1100,.28,'triangle'],power:[400,1200,.42,'sine'],charge:[300,900,.2,'sine'],'shield-break':[700,80,.35,'sawtooth'],crash:[120,25,.45,'sawtooth']},p=presets[type]||presets.power,o=this.ctx.createOscillator(),g=this.ctx.createGain(),t=this.ctx.currentTime;o.type=p[3];o.frequency.setValueAtTime(p[0],t);o.frequency.exponentialRampToValueAtTime(p[1],t+p[2]);g.gain.setValueAtTime(p[4]||.18,t);g.gain.exponentialRampToValueAtTime(.001,t+p[2]);o.connect(g);g.connect(this.master);o.start();o.stop(t+p[2]);o.onended=()=>{o.disconnect();g.disconnect();};}
+}
+
