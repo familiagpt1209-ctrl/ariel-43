@@ -1,0 +1,286 @@
+{
+  "license": "Original assets authored for this project; no downloaded models.",
+  "meshes": {
+    "vehicle-car": {
+      "triangles": 174
+    },
+    "vehicle-taxi": {
+      "triangles": 188
+    },
+    "vehicle-van": {
+      "triangles": 224
+    },
+    "vehicle-bus": {
+      "triangles": 274
+    },
+    "vehicle-truck": {
+      "triangles": 332
+    },
+    "vehicle-police": {
+      "triangles": 200
+    },
+    "vehicle-ambulance": {
+      "triangles": 296
+    },
+    "vehicle-motorbike": {
+      "triangles": 216
+    },
+    "wheel": {
+      "triangles": 216
+    },
+    "train-car": {
+      "triangles": 454
+    },
+    "building-0": {
+      "triangles": 976
+    },
+    "building-1": {
+      "triangles": 550
+    },
+    "building-2": {
+      "triangles": 823
+    },
+    "building-3": {
+      "triangles": 825
+    },
+    "building-4": {
+      "triangles": 62
+    },
+    "building-5": {
+      "triangles": 974
+    },
+    "building-6": {
+      "triangles": 696
+    },
+    "building-7": {
+      "triangles": 1190
+    },
+    "building-8": {
+      "triangles": 823
+    },
+    "building-9": {
+      "triangles": 760
+    },
+    "building-10": {
+      "triangles": 1190
+    },
+    "building-11": {
+      "triangles": 742
+    },
+    "lamp": {
+      "triangles": 104
+    },
+    "bench": {
+      "triangles": 140
+    },
+    "bin": {
+      "triangles": 56
+    },
+    "traffic-light": {
+      "triangles": 188
+    },
+    "sign": {
+      "triangles": 34
+    },
+    "station": {
+      "triangles": 190
+    },
+    "stairs": {
+      "triangles": 232
+    },
+    "container": {
+      "triangles": 446
+    },
+    "crane": {
+      "triangles": 604
+    },
+    "hook": {
+      "triangles": 52
+    },
+    "tank": {
+      "triangles": 124
+    },
+    "pipe": {
+      "triangles": 40
+    },
+    "boat": {
+      "triangles": 136
+    },
+    "lighthouse": {
+      "triangles": 324
+    },
+    "clocktower": {
+      "triangles": 214
+    },
+    "arch": {
+      "triangles": 88
+    },
+    "neon-tower": {
+      "triangles": 278
+    },
+    "fountain": {
+      "triangles": 220
+    },
+    "tree-0": {
+      "triangles": 308
+    },
+    "tree-1": {
+      "triangles": 308
+    },
+    "tree-2": {
+      "triangles": 308
+    },
+    "tree-3": {
+      "triangles": 308
+    },
+    "tree-4": {
+      "triangles": 38
+    },
+    "tree-5": {
+      "triangles": 38
+    },
+    "umbrella": {
+      "triangles": 56
+    },
+    "kiosk": {
+      "triangles": 94
+    },
+    "bicycle": {
+      "triangles": 516
+    },
+    "swing": {
+      "triangles": 152
+    },
+    "pedestrian": {
+      "triangles": 168
+    },
+    "bird": {
+      "triangles": 2
+    },
+    "tunnel": {
+      "triangles": 104
+    },
+    "billboard": {
+      "triangles": 14
+    },
+    "fence": {
+      "triangles": 140
+    },
+    "forklift": {
+      "triangles": 256
+    },
+    "bridge-leaf": {
+      "triangles": 1048
+    },
+    "cargo-crate": {
+      "triangles": 292
+    },
+    "coastal-canopy": {
+      "triangles": 84
+    },
+    "warehouse-gate": {
+      "triangles": 166
+    },
+    "building-12": {
+      "triangles": 434
+    },
+    "building-13": {
+      "triangles": 378
+    },
+    "building-14": {
+      "triangles": 50
+    },
+    "laundry": {
+      "triangles": 28
+    },
+    "garage": {
+      "triangles": 168
+    },
+    "billboard-0": {
+      "triangles": 14
+    },
+    "billboard-1": {
+      "triangles": 14
+    },
+    "billboard-2": {
+      "triangles": 14
+    },
+    "neon-strip-cyan": {
+      "triangles": 16
+    },
+    "neon-strip-pink": {
+      "triangles": 16
+    },
+    "holo-volt": {
+      "triangles": 20
+    }
+  },
+  "vehicles": {
+    "car": {
+      "width": 1.85,
+      "length": 4.1,
+      "height": 1.45,
+      "axle": 1.271,
+      "radius": 0.29,
+      "wheels": 4
+    },
+    "taxi": {
+      "width": 1.9,
+      "length": 4.4,
+      "height": 1.5,
+      "axle": 1.364,
+      "radius": 0.29,
+      "wheels": 4
+    },
+    "van": {
+      "width": 2.05,
+      "length": 5.1,
+      "height": 2.15,
+      "axle": 1.581,
+      "radius": 0.29,
+      "wheels": 4
+    },
+    "bus": {
+      "width": 2.15,
+      "length": 6.8,
+      "height": 3.05,
+      "axle": 2.108,
+      "radius": 0.36,
+      "wheels": 4
+    },
+    "truck": {
+      "width": 2.18,
+      "length": 6.8,
+      "height": 2.8,
+      "axle": 2.108,
+      "radius": 0.36,
+      "wheels": 4
+    },
+    "police": {
+      "width": 1.9,
+      "length": 4.45,
+      "height": 1.55,
+      "axle": 1.3795,
+      "radius": 0.29,
+      "wheels": 4
+    },
+    "ambulance": {
+      "width": 2.1,
+      "length": 5.6,
+      "height": 2.4,
+      "axle": 1.736,
+      "radius": 0.29,
+      "wheels": 4
+    },
+    "motorbike": {
+      "width": 0.75,
+      "length": 2.2,
+      "height": 1.3,
+      "axle": 0.682,
+      "radius": 0.29,
+      "wheels": 2
+    }
+  },
+  "atlas": "embedded 1024x2048",
+  "sha256": "d5f1b885b3e9a7dd7a6e6ef71eb58cec66f3d8e628d0f497adb00e3a3743d326"
+}

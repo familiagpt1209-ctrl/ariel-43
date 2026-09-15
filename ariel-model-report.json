@@ -1,0 +1,67 @@
+{
+  "sourceBodyVertices": 498431,
+  "sourceHeadVertices": 749925,
+  "bodyRetainedVertices": 431102,
+  "headRetainedVertices": 244528,
+  "bones": [
+    "Root",
+    "Hips",
+    "Spine",
+    "Chest",
+    "Neck",
+    "Head",
+    "LeftUpperArm",
+    "LeftLowerArm",
+    "LeftHand",
+    "LeftUpperLeg",
+    "LeftLowerLeg",
+    "LeftFoot",
+    "RightUpperArm",
+    "RightLowerArm",
+    "RightHand",
+    "RightUpperLeg",
+    "RightLowerLeg",
+    "RightFoot"
+  ],
+  "rig": "new humanoid; source FBX files have no armature or clips",
+  "added": [
+    "neck junction",
+    "lower trousers",
+    "sneakers"
+  ],
+  "lods": {
+    "high": {
+      "bytes": 25363860,
+      "textures": 2048,
+      "triangles": 96030,
+      "sha256": "ebf7bd0fd7cae8a7255a9c6bb115e337f6725c0099339202d19cb7e085b363b6"
+    },
+    "low": {
+      "bytes": 8361048,
+      "textures": 1024,
+      "triangles": 43325,
+      "sha256": "0de035301cef8b41a691f48aff237b2f15c4a0da0de4d66a67a0d94c5936494a"
+    }
+  },
+  "revision": 6,
+  "changes": [
+    "Hand/cloth contact segmentation corrected without moving original vertices",
+    "Four small contact caps added",
+    "Neck joining surface uses a texture baked from the original head colours",
+    "Local-space IK, precise board contacts and run stance; relaxed Idle",
+    "Removed 24698 dark vest-collar faces from the supplied head bust below the protected face/hair region"
+  ],
+  "limitations": [
+    "Individual fingers are not rigged",
+    "Small scan contact details and deformation extremes still need refinement",
+    "Not certified as an invisible final fusion",
+    "Visible texture irregularities remain at the side and back of the neck",
+    "Blender exporter reports mesh validation repair and multiple texture sampler warnings; logs retained"
+  ],
+  "preservation": {
+    "protectedHeadFaces": 402269,
+    "faceHairGeometryAndUV": "byte-identical in master; runtime uses documented LOD simplification",
+    "body": "original unique vertex coordinates and original face UVs retained; four small contact caps added",
+    "textures": "original packed images retained; separate joining surface uses baked source skin colours"
+  }
+}
